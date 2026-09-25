@@ -11,9 +11,7 @@ void main() {
 }
 
 class MyWidget extends StatelessWidget {
- MyWidget({super.key});
-
-  List names = ["Mitch","Sharon","Vince"];
+  MyWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,10 +25,13 @@ class MyWidget extends StatelessWidget {
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.logout))],
         ),
         //ListView, yazılımda (özellikle Flutter, Android, React Native gibi mobil ve web geliştirme teknolojilerinde) birden fazla ögeyi dikey veya yatay olarak sıralayan ve ekrana sığmayan ögeleri kaydırmayı (scroll) sağlayan bir liste bileşenidir (widget/component).
-        body: ListView.builder(
-          itemCount: names.length,
+        body: GridView.builder(
+          itemCount: 64,
+          gridDelegate:
+              //yatayda kaç tane var
+              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 16),
           itemBuilder: (context, index) =>
-              ListTile(title: Text(names[index])),
+              Container(color: Colors.deepPurple, margin: EdgeInsets.all(2)),
         ),
       ),
     );
