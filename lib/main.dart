@@ -25,13 +25,25 @@ class MyWidget extends StatelessWidget {
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.logout))],
         ),
         //ListView, yazılımda (özellikle Flutter, Android, React Native gibi mobil ve web geliştirme teknolojilerinde) birden fazla ögeyi dikey veya yatay olarak sıralayan ve ekrana sığmayan ögeleri kaydırmayı (scroll) sağlayan bir liste bileşenidir (widget/component).
-        body: GridView.builder(
-          itemCount: 64,
-          gridDelegate:
-              //yatayda kaç tane var
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 16),
-          itemBuilder: (context, index) =>
-              Container(color: Colors.deepPurple, margin: EdgeInsets.all(2)),
+        body:Stack(
+          alignment: Alignment.bottomRight,
+                     children:[ 
+                       Container(
+              height: 300,
+              width: 300,
+              color:Colors.cyan
+            ),
+              Container(
+              height: 200,
+              width: 200,
+              color:const Color.fromARGB(255, 88, 0, 212)
+            ),
+              Container(
+              height: 100,
+              width: 100,
+              color:const Color.fromARGB(255, 212, 0, 184)
+            ),
+           ],
         ),
       ),
     );
