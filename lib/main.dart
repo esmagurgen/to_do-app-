@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/pages/first_page.dart';
 
 //Flutter'da elevation, bir widget'ın ekrandan ne kadar yüksekte (havada) durduğunu belirleyen özelliktir. Arayüze 3 boyutlu bir derinlik katar ve widget'ın arkasına gölge (shadow) ekler.
 //Flutter'da leading, bir satırın veya başlığın en başında (sol tarafında) yer alan ögeyi belirleyen parametredir.
@@ -10,37 +11,13 @@ void main() {
   runApp(MyWidget());
 }
 
-void userTapped() {
-  print("User tapped");
-}
-
 class MyWidget extends StatelessWidget {
-  MyWidget({super.key});
+  const MyWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.cyan,
-          title: Text("my app bar"),
-          elevation: 0,
-          leading: Icon(Icons.menu),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.logout))],
-        ),
-        //ListView, yazılımda (özellikle Flutter, Android, React Native gibi mobil ve web geliştirme teknolojilerinde) birden fazla ögeyi dikey veya yatay olarak sıralayan ve ekrana sığmayan ögeleri kaydırmayı (scroll) sağlayan bir liste bileşenidir (widget/component).
-        body: Center(
-          child: GestureDetector(
-            onTap: userTapped,
-            child: Container(
-              width: 200,
-              height: 200,
-              color: Colors.deepPurple[200],
-              child: Center(child: Text("tap me"),)
-            ),
-          ),
-        ),
-      ),
-    );
+    debugShowCheckedModeBanner: false,
+     home:FirstPage(),
+     );
   }
 }
