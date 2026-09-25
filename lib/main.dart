@@ -10,6 +10,10 @@ void main() {
   runApp(MyWidget());
 }
 
+void userTapped() {
+  print("User tapped");
+}
+
 class MyWidget extends StatelessWidget {
   MyWidget({super.key});
   @override
@@ -25,25 +29,16 @@ class MyWidget extends StatelessWidget {
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.logout))],
         ),
         //ListView, yazılımda (özellikle Flutter, Android, React Native gibi mobil ve web geliştirme teknolojilerinde) birden fazla ögeyi dikey veya yatay olarak sıralayan ve ekrana sığmayan ögeleri kaydırmayı (scroll) sağlayan bir liste bileşenidir (widget/component).
-        body:Stack(
-          alignment: Alignment.bottomRight,
-                     children:[ 
-                       Container(
-              height: 300,
-              width: 300,
-              color:Colors.cyan
-            ),
-              Container(
-              height: 200,
+        body: Center(
+          child: GestureDetector(
+            onTap: userTapped,
+            child: Container(
               width: 200,
-              color:const Color.fromARGB(255, 88, 0, 212)
+              height: 200,
+              color: Colors.deepPurple[200],
+              child: Center(child: Text("tap me"),)
             ),
-              Container(
-              height: 100,
-              width: 100,
-              color:const Color.fromARGB(255, 212, 0, 184)
-            ),
-           ],
+          ),
         ),
       ),
     );
