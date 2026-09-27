@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/pages/first_page.dart';
-import 'package:habit_tracker/pages/second_page.dart';
+import 'package:habit_tracker/pages/home_page.dart';
+import 'package:habit_tracker/pages/settings_page.dart';
 
 //Flutter'da elevation, bir widget'ın ekrandan ne kadar yüksekte (havada) durduğunu belirleyen özelliktir. Arayüze 3 boyutlu bir derinlik katar ve widget'ın arkasına gölge (shadow) ekler.
 //Flutter'da leading, bir satırın veya başlığın en başında (sol tarafında) yer alan ögeyi belirleyen parametredir.
@@ -25,8 +26,9 @@ class MyWidget extends StatelessWidget {
      //'/secondpage' adresi yazılırsa  SecondPage() ekranını açar.
      //böylece Navigator.pushNamed() yazarak sayfa değiştirebiliriz 
      routes: {
-     '/secondpage':(context) => SecondPage(),
-     '/firstpage':(context) => FirstPage()
+     '/firstpage':(context) => FirstPage(),
+     '/settingspage':(context) => SettingsPage(),
+     '/homepage':(context) => HomePage()
      },
      );
   }

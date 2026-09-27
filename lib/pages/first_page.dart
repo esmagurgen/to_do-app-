@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/pages/second_page.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -8,15 +7,26 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("1st page")),
-      body: Center(
-        //ElevatedButton, Flutter'da arka planı renkli, hafif kabartmalı (gölgeli) ve üzerine tıklandığında derinlik hissi veren standart ana buton bileşenidir.onPressed ve child(butonun içindeki yazı veya simge) ihtiyaç duyar.
-        child: ElevatedButton(
-          child: Text("2nd page"),
-          onPressed: () {
-            //Navigator, Flutter'da sayfalar (route) arasındaki geçişleri ve ekran akışını yöneten mekanizmadır.
-            //navigator.push yerine kullanabileceğimiz bir yöntem daha var
-            Navigator.pushNamed(context, '/secondpage');
-          },
+      drawer: Drawer(
+        backgroundColor: Colors.deepOrange,
+        child: Column(
+          children: [
+            DrawerHeader(child: Icon(Icons.favorite, size: 48)),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("homee"),
+              onTap: () {
+                Navigator.pushNamed(context, '/homepage');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("settings"),
+              onTap: () {
+                Navigator.pushNamed(context, '/settingspage');
+              },
+            ),
+          ],
         ),
       ),
     );
