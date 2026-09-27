@@ -16,6 +16,7 @@ class FirstPage extends StatelessWidget {
               leading: Icon(Icons.home),
               title: Text("homee"),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(context, '/homepage');
               },
             ),
@@ -23,6 +24,8 @@ class FirstPage extends StatelessWidget {
               leading: Icon(Icons.settings),
               title: Text("settings"),
               onTap: () {
+                //geri geldiğimizde drwaer ın tekrardan karşımıza çıkmasını engellemek lazım
+                Navigator.pop(context);
                 Navigator.pushNamed(context, '/settingspage');
               },
             ),
