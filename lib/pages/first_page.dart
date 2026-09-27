@@ -14,11 +14,8 @@ class FirstPage extends StatelessWidget {
           child: Text("2nd page"),
           onPressed: () {
             //Navigator, Flutter'da sayfalar (route) arasındaki geçişleri ve ekran akışını yöneten mekanizmadır.
-            Navigator.push(
-              context,
-              //Geçiş sırasında platforma uygun (Android/iOS tarzı) sayfa kayma animasyonunu otomatik olarak sağlar.  
-              MaterialPageRoute(builder: (context) => SecondPage()),
-            );
+            //navigator.push yerine kullanabileceğimiz bir yöntem daha var
+            Navigator.pushNamed(context, '/secondpage');
           },
         ),
       ),
