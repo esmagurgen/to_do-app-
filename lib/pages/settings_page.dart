@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
-  const new({super.key});
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar
-      (title:Text("settings page"),),
+      backgroundColor: Colors.blue,
+      body: Center(child: Text("settings page"),),
     );
   }
 }
