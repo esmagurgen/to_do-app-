@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/utilities/dialog_box.dart';
+import 'package:habit_tracker/utilities/to_do_tile.dart';
 
 class ToDoPage extends StatefulWidget {
   const new({super.key});
@@ -8,36 +10,59 @@ class ToDoPage extends StatefulWidget {
 }
 
 class _ToDoPageState extends State<ToDoPage> {
-  TextEditingController myController = TextEditingController();
-  String greetingMessage = "";
-  void greetUser() {
+  final _controller = TextEditingController();
+  //list of todo tasks
+  List toDoList = [
+    ["make tutorial", true],
+    ["do exercise", false],
+  ];
+  void checkBoxChanged(bool? value, int index) {
     setState(() {
-       greetingMessage = "Hello," + myController.text;
+      toDoList[index][1] = !toDoList[index][1];
     });
+  }
+
+  //save new task
+  void saveNewTask() {
+    setState(() {
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
+  void createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DialogBox(
+          controller: _controller,
+          onSave: saveNewTask,
+          onCancel: () {},
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            //TextField, kullanıcının klavye aracılığıyla metin (yazı, sayı, şifre vb.) girmesini sağlayan temel arayüz (UI) bileşenidir.
-            children: [
-              Text(greetingMessage),
-              TextField(
-                controller: myController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "type your name",
-                ),
-              ),
-              ElevatedButton(onPressed: greetUser, child: Text("tap")),
-            ],
-          ),
-        ),
+      backgroundColor: Colors.amberAccent,
+      appBar: AppBar(title: Text("TO DO"), backgroundColor: Colors.amber),
+      floatingActionButton: FloatingActionButton(
+        onPressed: createNewTask,
+        child: Icon(Icons.add),
+      ),
+      //List view saayesınde yapacaklarımızın lıstesı gozukucek
+      body: ListView.builder(
+        itemCount: toDoList.length,
+        itemBuilder: (context, index) {
+          return ToDoTile(
+            taskName: toDoList[index][0],
+            taskCompleted: toDoList[index][1],
+            onChanged: (value) => checkBoxChanged(value, index),
+          );
+        },
       ),
     );
   }

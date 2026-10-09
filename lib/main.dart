@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/pages/to_do_page.dart';
 
 void main() {
- runApp(MyWidget());
+  runApp(MyWidget());
 }
 
 class MyWidget extends StatelessWidget {
-  const new({super.key});
+  MyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      //burada demo yazısını kaldırdık.
       debugShowCheckedModeBanner: false,
-      home:ToDoPage()
+      //ana sayfamızın to do page olacagını belırttık yanı ılk acıldıgında ToDoPage gozukucek.
+      home:ToDoPage(),
     );
   }
 }
