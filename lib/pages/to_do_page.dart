@@ -9,21 +9,34 @@ class ToDoPage extends StatefulWidget {
 
 class _ToDoPageState extends State<ToDoPage> {
   TextEditingController myController = TextEditingController();
+  String greetingMessage = "";
   void greetUser() {
-    print(myController.text);
+    setState(() {
+       greetingMessage = "Hello," + myController.text;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          //TextField, kullanıcının klavye aracılığıyla metin (yazı, sayı, şifre vb.) girmesini sağlayan temel arayüz (UI) bileşenidir.
-          children: [
-            TextField(controller: myController),
-            ElevatedButton(onPressed: greetUser, child: Text("tap")),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            //TextField, kullanıcının klavye aracılığıyla metin (yazı, sayı, şifre vb.) girmesini sağlayan temel arayüz (UI) bileşenidir.
+            children: [
+              Text(greetingMessage),
+              TextField(
+                controller: myController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "type your name",
+                ),
+              ),
+              ElevatedButton(onPressed: greetUser, child: Text("tap")),
+            ],
+          ),
         ),
       ),
     );
