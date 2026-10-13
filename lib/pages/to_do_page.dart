@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/utilities/dialog_box.dart';
 import 'package:habit_tracker/utilities/to_do_tile.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class ToDoPage extends StatefulWidget {
   const new({super.key});
@@ -10,6 +11,9 @@ class ToDoPage extends StatefulWidget {
 }
 
 class _ToDoPageState extends State<ToDoPage> {
+  //referance the hive box
+  final _myBox = Hive.openBox('mybox');
+
   final _controller = TextEditingController();
   //list of todo tasks
   List toDoList = [
