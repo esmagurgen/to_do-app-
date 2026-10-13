@@ -32,7 +32,7 @@ class DialogBox extends StatelessWidget {
                 MyButton(buttonName: "save", onPressed:onSave),
                 const SizedBox(width: 8),
                 //cancel button
-                MyButton(buttonName: "cancel", onPressed:onCancel),
+                MyButton(buttonName: "cancel", onPressed:onCancel ),
               ],
             ),
           ],

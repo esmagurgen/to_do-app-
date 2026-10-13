@@ -38,10 +38,17 @@ class _ToDoPageState extends State<ToDoPage> {
         return DialogBox(
           controller: _controller,
           onSave: saveNewTask,
-          onCancel: () {},
+          onCancel: () => Navigator.of(context).pop(),
         );
       },
     );
+  }
+
+  //delete task
+  void deleteTask(int index) {
+    setState(() {
+      toDoList.remove(index);
+    });
   }
 
   @override
@@ -61,6 +68,7 @@ class _ToDoPageState extends State<ToDoPage> {
             taskName: toDoList[index][0],
             taskCompleted: toDoList[index][1],
             onChanged: (value) => checkBoxChanged(value, index),
+            deleteFunction: (context) => deleteTask(index),
           );
         },
       ),
