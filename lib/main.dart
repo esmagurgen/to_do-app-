@@ -4,13 +4,15 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main() async {
-  runApp(MyWidget());
 
+ WidgetsFlutterBinding.ensureInitialized();
   //init the hive
   await Hive.initFlutter();
 
   //open the box
-  var box = await Hive.openBox('my box');
+  var box = await Hive.openBox('mybox');
+
+   runApp(MyWidget());
 }
 
 class MyWidget extends StatelessWidget {

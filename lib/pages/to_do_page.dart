@@ -22,7 +22,8 @@ class _ToDoPageState extends State<ToDoPage> {
     if (_myBox.get("TODOLIST") == null) {
       db.createInitialData();
     } else {
-    
+      //there already exists data
+      db.loadData();
     }
     super.initState();
   }
@@ -34,6 +35,7 @@ class _ToDoPageState extends State<ToDoPage> {
     setState(() {
       db.toDoList[index][1] = !db.toDoList[index][1];
     });
+    db.updateDataBase();
   }
 
   //save new task
@@ -43,6 +45,7 @@ class _ToDoPageState extends State<ToDoPage> {
       _controller.clear();
     });
     Navigator.of(context).pop();
+    db.updateDataBase();
   }
 
   void createNewTask() {
@@ -61,8 +64,9 @@ class _ToDoPageState extends State<ToDoPage> {
   //delete task
   void deleteTask(int index) {
     setState(() {
-      db.toDoList.remove(index);
+      db.toDoList.removeAt(index);
     });
+    db.updateDataBase();
   }
 
   @override
